@@ -29,7 +29,7 @@ public class AverageValue {
         System.out.println();
 
         double average = calculateAverage(array);
-        System.out.println("Среднее значение элементов в массиве: " + average);
+        System.out.println("Среднее значение элементов в массиве: " + average + '\n');
     }
 
     public static double calculateAverage(int[] array) {

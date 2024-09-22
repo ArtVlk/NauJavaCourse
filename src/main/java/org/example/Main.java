@@ -6,5 +6,8 @@ public class Main {
 
         AverageValue ex1 = new AverageValue();
         ex1.run();
+
+        BubbleSort ex2 = new BubbleSort();
+        ex2.run();
     }
 }
