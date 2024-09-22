@@ -13,5 +13,8 @@ public class Main {
         Employee ex3 = new Employee();
         ex3.run();
 
+        HttpClientSolution ex4 = new HttpClientSolution();
+        ex4.run();
+
     }
 }
