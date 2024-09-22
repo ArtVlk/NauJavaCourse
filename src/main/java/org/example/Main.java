@@ -9,5 +9,9 @@ public class Main {
 
         BubbleSort ex2 = new BubbleSort();
         ex2.run();
+
+        Employee ex3 = new Employee();
+        ex3.run();
+
     }
 }
