@@ -16,5 +16,7 @@ public class Main {
         HttpClientSolution ex4 = new HttpClientSolution();
         ex4.run();
 
+        FileSyncTask ex5 = new FileSyncTask();
+        ex5.run();
     }
 }
