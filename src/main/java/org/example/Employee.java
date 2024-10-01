@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -77,7 +78,7 @@ public class Employee {
         employees.add(new Employee("Роберт Робертов", 40, "Sales", 70000.0));
 
         List<Employee> sortedEmployees = employees.stream()
-                .sorted((e1, e2) -> e1.getSalary().compareTo(e2.getSalary()))
+                .sorted(Comparator.comparing(Employee::getSalary))
                 .toList();
 
         sortedEmployees.forEach(System.out::println);

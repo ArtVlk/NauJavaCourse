@@ -27,11 +27,10 @@ public class FileSyncTask implements Task {
 
     @Override
     public void start() {
-        if (running){
+        if (scheduler != null && !scheduler.isShutdown()) {
             System.out.println("Задача уже запущена.");
             return;
         }
-        running = true;
         scheduler = Executors.newSingleThreadScheduledExecutor();
         scheduler.scheduleAtFixedRate(this::syncFiles, 0, 5, TimeUnit.SECONDS);
         System.out.println("Задача запущена.");
@@ -39,17 +38,16 @@ public class FileSyncTask implements Task {
 
     @Override
     public void stop() {
-        if (!running){
+        if (scheduler.isShutdown()) {
             System.out.println("Задача не запущена.");
             return;
         }
-        running = false;
         scheduler.shutdown();
         try {
-            if (!scheduler.awaitTermination(10, TimeUnit.SECONDS)){
+            if (!scheduler.awaitTermination(10, TimeUnit.SECONDS)) {
                 scheduler.shutdownNow();
             }
-        } catch (InterruptedException e){
+        } catch (InterruptedException e) {
             scheduler.shutdownNow();
         }
         System.out.println("Задача остановлена.");

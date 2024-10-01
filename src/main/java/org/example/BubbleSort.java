@@ -5,33 +5,42 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class BubbleSort {
-    public static void run(){
+    public static void run() {
         System.out.println("№2");
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Введите n: ");
-        int n = scanner.nextInt();
+        int n = getInput();
 
-        if (n < 0){
+        if (n < 0) {
             System.out.println("Неверный диапазон n");
             return;
         }
 
+        ArrayList<Double> list = generateNumbers(n);
+        printList(list, "Исходный массив: ");
+
+        bubbleSort(list);
+        printList(list, "Отсортированный список: ");
+    }
+
+    public static int getInput() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Введите n: ");
+        return scanner.nextInt();
+    }
+
+    public static ArrayList<Double> generateNumbers(int n) {
         ArrayList<Double> list = new ArrayList<>(n);
         Random random = new Random();
 
-        for (int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++) {
             list.add(random.nextDouble() * 100);
         }
 
-        System.out.print("Исходный массив: ");
-        for (Double num: list){
-            System.out.print(num + ",");
-        }
-        System.out.println();
+        return list;
+    }
 
-        bubbleSort(list);
-        System.out.print("Отсортированный список: ");
-        for (Double num : list){
+    public static void printList(ArrayList<Double> list, String message) {
+        System.out.print(message);
+        for (Double num : list) {
             System.out.print(num + " ");
         }
         System.out.println('\n');
